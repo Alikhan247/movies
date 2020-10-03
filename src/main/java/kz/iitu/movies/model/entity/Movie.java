@@ -34,6 +34,4 @@ public class Movie {
     private double price;
 
     private int rating;
-
-
 }
