@@ -1,3 +1,6 @@
 # movies
 
-link to microservice: https://github.com/Alikhan247/recommendation
+link to microservices: 
+https://github.com/Alikhan247/recommendation
+
+https://github.com/Alikhan247/service-discovery
