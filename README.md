@@ -36,3 +36,8 @@ Functions:
 * addWish(userId/WishId) – adds wish for a user
 * deleteWish(userId/WishId) – removes wish for a user
 * createWish(id) – creates wish for user
+
+
+
+#Front:
+https://github.com/Alikhan247/Movie-front
