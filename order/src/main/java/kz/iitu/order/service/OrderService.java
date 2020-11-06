@@ -1,10 +1,14 @@
 package kz.iitu.order.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import kz.iitu.order.model.Movie;
 import kz.iitu.order.model.Order;
 import kz.iitu.order.repository.OrderRepository;
 import kz.iitu.order.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -12,6 +16,8 @@ import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
+@EnableHystrix
+@EnableHystrixDashboard
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -27,6 +33,13 @@ public class OrderService {
         return orderRepository.findById(id).get();
 
     }
+
+    @HystrixCommand(fallbackMethod = "createOrder",
+            threadPoolKey = "createOrderPool",
+            threadPoolProperties = {
+                    @HystrixProperty(name="coreSize", value="20"),
+                    @HystrixProperty(name="maxQueueSize", value="10"),
+            })
 
     public Order createOrder(Order order) {
 
