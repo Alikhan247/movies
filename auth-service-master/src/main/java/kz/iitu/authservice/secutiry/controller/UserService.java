@@ -9,11 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @AllArgsConstructor
 @Component
-public class UserService  {
+public class UserService {
 
     private UserRepository userRepository;
 

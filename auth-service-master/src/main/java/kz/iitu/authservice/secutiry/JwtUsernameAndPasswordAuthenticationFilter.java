@@ -3,7 +3,7 @@ package kz.iitu.authservice.secutiry;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import kz.iitu.authservice.secutiry.entity.User;
+import kz.iitu.authservice.secutiry.entity.AuthenticationDTO;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,7 +33,7 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         try{
-            User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
+            AuthenticationDTO user = new ObjectMapper().readValue(request.getInputStream(), AuthenticationDTO.class);
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                     user.getUsername(), user.getPassword(), Collections.emptyList()

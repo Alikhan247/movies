@@ -1,10 +1,11 @@
 package kz.iitu.authservice.secutiry.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,6 +34,8 @@ public class User implements UserDetails {
     @NotNull
     @NotEmpty
     private String lastName;
+
+    @Column(name = "username")
     private String username;
 
     @NotEmpty
