@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 public class User implements UserDetails {
@@ -33,6 +33,7 @@ public class User implements UserDetails {
     @NotNull
     @NotEmpty
     private String lastName;
+    private String username;
 
     @NotEmpty
     @NotNull
@@ -57,7 +58,7 @@ public class User implements UserDetails {
     @JsonIgnore
     @Override
     public String getUsername() {
-        return id.toString();
+        return username;
     }
 
     @JsonIgnore

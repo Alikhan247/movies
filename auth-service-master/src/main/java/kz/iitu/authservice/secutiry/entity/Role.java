@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "employee_role")
+@Table(name = "user_role")
 @Builder(toBuilder = true)
 @Getter
 @Setter
