@@ -1,4 +1,4 @@
-package kz.iitu.wishlist.configuration;
+package kz.iitu.order.configuration;
 
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -13,7 +13,7 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-public class Configurations {
+public class SpringConfiguration {
 
     @Bean
     @LoadBalanced
@@ -38,3 +38,4 @@ public class Configurations {
     }
 
 }
+
