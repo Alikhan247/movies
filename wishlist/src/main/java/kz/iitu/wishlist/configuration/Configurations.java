@@ -17,24 +17,31 @@ public class Configurations {
 
     @Bean
     @LoadBalanced
-    public RestTemplate restTemplate() {
-
-        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
-        requestFactory.setConnectTimeout(3000);
-
-        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-
-        credentialsProvider.setCredentials(AuthScope.ANY,
-                new UsernamePasswordCredentials("rest-client", "p@ssword"));
-
-        HttpClient client = HttpClientBuilder
-                .create()
-                .setDefaultCredentialsProvider(credentialsProvider)
-                .build();
-
-        requestFactory.setHttpClient(client);
-
-        return new RestTemplate(requestFactory);
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
     }
+
+    //
+//    @Bean
+//    @LoadBalanced
+//    public RestTemplate restTemplate() {
+//
+//        HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
+//        requestFactory.setConnectTimeout(3000);
+//
+//        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+//
+//        credentialsProvider.setCredentials(AuthScope.ANY,
+//                new UsernamePasswordCredentials("rest-client", "p@ssword"));
+//
+//        HttpClient client = HttpClientBuilder
+//                .create()
+//                .setDefaultCredentialsProvider(credentialsProvider)
+//                .build();
+//
+//        requestFactory.setHttpClient(client);
+//
+//        return new RestTemplate(requestFactory);
+//    }
 
 }

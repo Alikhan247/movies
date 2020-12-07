@@ -12,9 +12,10 @@ import java.util.List;
 public class MovieService {
 
     private final MovieRepository movieRepository;
+    private final MovieProducer movieProducer;
 
     public Movie addMovie(Movie movie) {
-
+        movieProducer.bookAdded(movie);
         return movieRepository.save(movie);
 
     }

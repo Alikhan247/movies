@@ -12,7 +12,7 @@ public class MovieProducer {
 
     private final KafkaTemplate<String, Movie> kafkaTemplate;
 
-    public void mealQuantity(Movie order){
+    public void bookAdded(Movie order){
         System.out.println("Producing new event");
         this.kafkaTemplate.send(TOPIC, order);
     }

@@ -20,7 +20,8 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers( HttpMethod.POST,"/auth").permitAll()
                     .antMatchers(HttpMethod.POST, "/users/registration").permitAll()
-                    .anyRequest().permitAll();
+                    .antMatchers(HttpMethod.OPTIONS,"*").permitAll()//allow CORS option calls
+                    .anyRequest().authenticated();
     }
 
 }

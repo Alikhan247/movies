@@ -60,6 +60,7 @@ public class JwtUsernameAndPasswordAuthenticationFilter extends UsernamePassword
                 .signWith(SignatureAlgorithm.HS512, "123456".getBytes())
                 .compact();
 
+        response.getWriter().write("Bearer "+token);
         response.addHeader("Authorization", "Bearer " + token);
 
     }
