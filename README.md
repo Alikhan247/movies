@@ -1,3 +1,29 @@
+![](images/Architecture.jpg)
+
+
+# ZUUL
+Zuul is a microservice that is responsible for routing within microservices using Service discovery.
+
+Functions:
+* redirect
+* credential check
+
+# Service discovery
+This microservice registers other microservices and manage them.
+
+Functions:
+* register
+* health
+* status
+
+#  Auth service
+This microservice is responsible for authenticating user.
+
+Functions:
+* authenticaition
+* restrictions
+
+
 # Movie
 Movie is a service that is responsible for movies manipulation. Movie entity represents movie in catalog
 
@@ -36,6 +62,16 @@ Functions:
 * addWish(userId/WishId) – adds wish for a user
 * deleteWish(userId/WishId) – removes wish for a user
 * createWish(id) – creates wish for user
+
+
+
+# Trailer
+Trailer is a service that gets link to the trailer from the movie. It is an addon microservice that uses resttemplate.
+
+Functions:
+* getTrailer(id) – gets trailer by movie id
+
+
 
 
 
