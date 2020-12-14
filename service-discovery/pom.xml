@@ -11,7 +11,7 @@
     <groupId>kz.iitu</groupId>
     <artifactId>service-discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>discovery-server</name>
+    <name>service-discovery</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -52,6 +52,27 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.9</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>developer.okta.com/microservice-docker-${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

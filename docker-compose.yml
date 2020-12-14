@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+
+  discovery-server:
+    build: service-discovery
+    ports:
+      - 8761:8761
+
+  zuul-service:
+    build: zuul-master
+    ports:
+      - 8762:8762
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://discovery-service:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:postgres://db:5432/movie
+      SPRING_DATASOURCE_USERNAME: postrgres
+      SPRING_DATASOURCE_PASSWORD: admin
+
+  auth-service:
+    build: auth-service-master
+    ports:
+      - 9100:9100
+    environment:
+      eureka.client.serviceUrl.defaultZone: http://discovery-service:8761/eureka/
+      SPRING_DATASOURCE_URL: jdbc:postgres://db:5432/movie
+      SPRING_DATASOURCE_USERNAME: postrgres
+      SPRING_DATASOURCE_PASSWORD: admin
+
+
+  postgresqldb:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=movie

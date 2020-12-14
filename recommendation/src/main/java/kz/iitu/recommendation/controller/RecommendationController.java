@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin("*")
+//@CrossOrigin("*")
 //@EnableCircuitBreaker
 public class RecommendationController {
 

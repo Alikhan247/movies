@@ -30,8 +30,8 @@ public class RecommendationService {
     @HystrixCommand(fallbackMethod = "getRecommendation",
             threadPoolKey = "getMoviesRecommendation",
             threadPoolProperties = {
-                    @HystrixProperty(name="coreSize", value="20"),
-                    @HystrixProperty(name="maxQueueSize", value="10"),
+                    @HystrixProperty(name="coreSize", value="90"),
+                    @HystrixProperty(name="maxQueueSize", value="150"),
             })
     public List<Movie> getRecommendation() {
 
